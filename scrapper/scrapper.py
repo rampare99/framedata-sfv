@@ -3,11 +3,6 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-
-def remove_empty(l):
-    return tuple(filter(lambda x: not isinstance(x, (list)) or x, (remove_empty(x) if isinstance(x, (tuple, list)) else x for x in l)))
-
-
 class FrameDataScrapper:
 
     def __init__(self):
