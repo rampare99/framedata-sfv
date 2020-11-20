@@ -8,17 +8,14 @@ from bs4 import BeautifulSoup
 class FrameDataScrapper:
 
     def __init__(self):
-        self.characters = ['ehonda']
-        # self.characters = ['ryu', 'chun-li', 'nash', 'mbison', 'cammy', 'birdie', 'ken', 'necalli', 'vega', 'rmika', 'rashid', 'karin', 'zangief',
-        #                    'laura', 'dhalsim', 'fang', 'alex', 'guile', 'ibuki', 'balrog', 'juri', 'urien', 'akuma', 'kolin', 'ed', 'abigail', 'menat', 'zeku', 'sakura',
-        #                    'blanka', 'falke', 'cody', 'g', 'sagat', 'kage', 'poison', 'ehonda', 'lucia', 'gill', 'seth']
-        self.url = 'https://game.capcom.com/cfn/sfv/character/{character}/frame/table#vt{vt}'
+        self.characters = {'ehonda': {'vt1': None, 'vt2': None}}
+        # self.characters = json.load(open('./config/characters.json'))
+        self.url = 'https://game.capcom.com/cfn/sfv/character/{character}/frame/table/{stance}#vt{vt}'
         self.cookies = {
             'language': 'en',
             'vmail': '49',
             'consent_memory': 'eyJuIjoxLCJtIjoxLCJwIjoxLCJ0IjoxLCJvayI6MH0%3D',
         }
-        self.framedata = {}
         self.inputs = json.load(open('./config/inputs.json'))
 
     @staticmethod
@@ -32,24 +29,31 @@ class FrameDataScrapper:
         text = re.sub(r'^\s{1,}', '', text)
         return text
 
-    def pullFrameData(self, shouldUpdate=False):
-        for character in self.characters:
-            for vt in ['1', '2']:
-                if(shouldUpdate):
-                    try:
-                        os.remove(f'./html/{character}-{vt}.html')
-                    except:
-                        pass
-                self.framedata[character] = self.pullFrameDataOfCharacter(
-                    character, vt)
+    @staticmethod
+    def tryRemove(file):
+        try:
+            os.remove(file)
+        except:
+            pass
 
-    def pullFrameDataOfCharacter(self, character, vt):
-        soup = self.loadSoup(character, vt)
+    def pullFrameData(self, shouldUpdate=False):
+        for character, sdata in self.characters.items():
+            if(list(sdata.values())[0] == None):  # These are v-triggers
+                for vt in sdata:
+                    self.characters[character][vt] = self.pullFrameDataOfCharacter(
+                        character, vt[2], shouldUpdate=shouldUpdate)
+            else:  # It has also a stance
+                for stance in sdata:
+                    for vt in sdata[stance]:
+                        self.characters[character][stance][vt] = self.pullFrameDataOfCharacter(
+                            character, vt[2], stance=stance, shouldUpdate=shouldUpdate)
+
+    def pullFrameDataOfCharacter(self, character, vt, stance=None, shouldUpdate=False):
+        soup = self.loadSoup(character, vt, stance, shouldUpdate)
         tableHeaders = self.getTableHeaders(soup)
-        #print(tableHeaders)
         for table in tableHeaders:
             data = self.getTableContent(soup, table[0])
-            # print(data)
+            print(data)
 
         return 'pingo'
 
@@ -83,7 +87,6 @@ class FrameDataScrapper:
         if(beginning is None):
           beginning = soup.find('th', text=re.compile(
               table + r'\s*'), attrs={'class': 'type'})
-        print(table)
         types = []
         range = False
         for row in rows:
@@ -131,12 +134,18 @@ class FrameDataScrapper:
                 chain.append(child)
         return [name, ' '.join(chain)]
 
-    def loadSoup(self, character, vt):
-        if(os.path.exists(f'./html/{character}-{vt}.html')):
-            return BeautifulSoup(open(f'./html/{character}-{vt}.html').read(), 'html.parser')
+    def loadSoup(self, character, vt, stance, shouldUpdate):
+        path = f'./html/{character}-vt{vt}.html'
+        if(stance):
+            path = path[:-5]+f'-st{stance}'+path[-5:]
+        if(shouldUpdate):
+            self.tryRemove(path)
+        if(os.path.exists(path)):
+            return BeautifulSoup(open(path).read(), 'html.parser')
         else:
             url = self.url.replace(
-                '{character}', character).replace('{vt}', vt)
+                '{character}', character).replace('{vt}', vt).replace('{stance}', '' if stance is None else stance)
+            print(url)
             if('scirid' not in self.cookies):
                 print('Please provide a scirid: ', end='')
                 self.cookies['scirid'] = re.sub(r'\s', '', input())
@@ -145,7 +154,7 @@ class FrameDataScrapper:
                 print('Received status code', page.status_code)
                 print('Check the scirid token')
                 exit(-1)
-            with open(f'html/{character}-{vt}.html', 'w+') as f:
+            with open(path, 'w+') as f:
                 f.write(page.text)
             return BeautifulSoup(page.text, 'html.parser')
 
