@@ -3,10 +3,14 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
+
 class FrameDataScrapper:
 
     def __init__(self):
         self.characters = ['ehonda']
+        # self.characters = ['ryu', 'chun-li', 'nash', 'mbison', 'cammy', 'birdie', 'ken', 'necalli', 'vega', 'rmika', 'rashid', 'karin', 'zangief',
+        #                    'laura', 'dhalsim', 'fang', 'alex', 'guile', 'ibuki', 'balrog', 'juri', 'urien', 'akuma', 'kolin', 'ed', 'abigail', 'menat', 'zeku', 'sakura',
+        #                    'blanka', 'falke', 'cody', 'g', 'sagat', 'kage', 'poison', 'ehonda', 'lucia', 'gill', 'seth']
         self.url = 'https://game.capcom.com/cfn/sfv/character/{character}/frame/table#vt{vt}'
         self.cookies = {
             'language': 'en',
@@ -15,20 +19,27 @@ class FrameDataScrapper:
         }
         self.framedata = {}
         self.inputs = {
-            "https://game.capcom.com/cfn/sfv/as/img/cmd/btn/punch.gif?h=cdde7fc8901adab4686621a896922c1a": 'P',
-            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/236.gif?h=81e527af198d2e5ddacf0aed44f61cdb": '236',
             "https://game.capcom.com/cfn/sfv/as/img/cmd/btn/kick.gif?h=782ca1c7f3e42332887e30ab0a5d37df": "K",
-            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/63214.gif?h=94b63ab09919622f1e451e21ffa32412": "63214",
-            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/623.gif?h=91ce5a17eb810540f177449f580dc244": "623",
-            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/3.gif?h=705de611ba081ecabe11861b0c4047f3": "3",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/btn/punch.gif?h=cdde7fc8901adab4686621a896922c1a": 'P',
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/1.gif?h=6ecbbeac560a29ef09988f3102c8be9f": "1",
             "https://game.capcom.com/cfn/sfv/as/img/cmd/key/2.gif?h=146d9a7c6b006b57d999d5633df090f0": "2",
-            "https://game.capcom.com/cfn/sfv/as/img/cmd/next.gif?h=124a6dc32d24b2472cf317a685310f07": ">",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/214.gif?h=b1e91134cef6d20e99b404fae2437195": "214",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/236.gif?h=81e527af198d2e5ddacf0aed44f61cdb": '236',
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/3.gif?h=705de611ba081ecabe11861b0c4047f3": "3",
             "https://game.capcom.com/cfn/sfv/as/img/cmd/key/4.gif?h=30f455943bd68bafe11e9359b871465d": "4",
-            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/6.gif?h=24d3886f118640b674eae14fabd0e016": "6",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/41236.gif?h=787788efb7ec868b50e3ba62dbc35a31": "41236",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/421.gif?h=59e10a581b753ed56f0ec4c84b6171de": "421",
             "https://game.capcom.com/cfn/sfv/as/img/cmd/key/5.gif?h=5c61278719e2dea3e98b59650f7f9a29": "5",
-            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/c4.gif?h=2a138cf782017000f8c40c9f6013b2e3": "C4",
-            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/c2.gif?h=7658c782425aef8b1eb937fcc509e195": "C2",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/6.gif?h=24d3886f118640b674eae14fabd0e016": "6",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/623.gif?h=91ce5a17eb810540f177449f580dc244": "623",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/63214.gif?h=94b63ab09919622f1e451e21ffa32412": "63214",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/63214789.gif?h=ea94c393814d70e1aedca75b3fc57311": "63214789",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/7.gif?h=4106c15ecc50f49a9e5a2e8da7f6fe17": "7",
             "https://game.capcom.com/cfn/sfv/as/img/cmd/key/8.gif?h=9247962a975feda8fd5e99965f18f774": "8",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/9.gif?h=41302981c9b1fd5c57eb7c11d8980de9": "9",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/c2.gif?h=7658c782425aef8b1eb937fcc509e195": "C2",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/key/c4.gif?h=2a138cf782017000f8c40c9f6013b2e3": "C4",
+            "https://game.capcom.com/cfn/sfv/as/img/cmd/next.gif?h=124a6dc32d24b2472cf317a685310f07": ">",
         }
 
     @staticmethod
@@ -91,7 +102,8 @@ class FrameDataScrapper:
         rows = soup.find('table', {'class': 'frameTbl'}).findAll(['tr', 'th'])
         beginning = soup.find('th', text=table, attrs={'class': 'type'})
         if(beginning is None):
-          beginning = soup.find('th', text=re.compile(table + r'\s*'), attrs={'class': 'type'})
+          beginning = soup.find('th', text=re.compile(
+              table + r'\s*'), attrs={'class': 'type'})
         print(table)
         types = []
         range = False
@@ -102,7 +114,7 @@ class FrameDataScrapper:
                 range = False
             headers = row.findAll('td')
             for header in headers:
-              if(range==True):
+              if(range == True):
                 if(self.getFirstClass(header) == 'name'):
                   moveList = self.parseName(header)
                   types.append(moveList)
