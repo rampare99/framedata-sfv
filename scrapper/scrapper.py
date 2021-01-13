@@ -10,8 +10,8 @@ from bs4 import BeautifulSoup
 class FrameDataScrapper:
 
     def __init__(self):
-        # self.characters = {'ehonda': {'vt1': None, 'vt2': None}}
-        self.characters = json.load(open('./config/characters.json'))
+        self.characters = {'ehonda': {'vt1': None, 'vt2': None}}
+        # self.characters = json.load(open('./config/characters.json'))
         self.url = 'https://game.capcom.com/cfn/sfv/character/{character}/frame/table/{stance}#vt{vt}'
         self.cookies = {
             'language': 'en',
@@ -37,10 +37,34 @@ class FrameDataScrapper:
             os.remove(file)
         except:
             pass
+    
+    @staticmethod
+    def formatDataframe(df):
+      df = FrameDataScrapper.formatListToStringColumns(df)
+      df = FrameDataScrapper.formatBooleanColumns(df)
+      # More tranformations
+      return df
+
+    @staticmethod
+    def exportToExcel(df):
+      df.to_excel('framedata.xlsx')
+
+    @staticmethod
+    def formatListToStringColumns(df):
+      columns = ['Cancel Info', 'Damage', 'Stun']
+      for column in columns:
+        df[column] = df[column].apply(lambda x: ','.join(x) if x is not None else None)
+      return df
+
+    @staticmethod
+    def formatBooleanColumns(df):
+      df['Projectile Nullification'] = df['Projectile Nullification'].apply(lambda x: x is not None)
+      return df
 
     def pullFrameData(self, shouldUpdate=False):
         dfs = []
         for character, sdata in self.characters.items():
+            print(f'Gathering data for {character}')
             if(list(sdata.values())[0] == None):  # These are v-triggers
                 for vt in sdata:
                     dfs.append(self.pullFrameDataOfCharacter(
@@ -50,10 +74,10 @@ class FrameDataScrapper:
                     for vt in sdata[stance]:
                         dfs.append(self.pullFrameDataOfCharacter(
                             character, vt[2], stance=stance, shouldUpdate=shouldUpdate))
-        result = pd.concat(dfs)
-        #print(pd.concat(dfs))
-        result.to_excel("framedata.xlsx")
-        return result
+        framedata = pd.concat(dfs)
+        formattedFramedata = FrameDataScrapper.formatDataframe(framedata)
+
+        FrameDataScrapper.exportToExcel(formattedFramedata)
 
     def pullFrameDataOfCharacter(self, character, vt, stance=None, shouldUpdate=False):
         soup = self.loadSoup(character, vt, stance, shouldUpdate)
