@@ -2,6 +2,8 @@ import os
 import re
 import requests
 import json
+import pandas as pd
+import numpy as np
 from bs4 import BeautifulSoup
 
 
@@ -51,9 +53,12 @@ class FrameDataScrapper:
     def pullFrameDataOfCharacter(self, character, vt, stance=None, shouldUpdate=False):
         soup = self.loadSoup(character, vt, stance, shouldUpdate)
         tableHeaders = self.getTableHeaders(soup)
+        print(tableHeaders)
+        dfs = []
         for table in tableHeaders:
             data = self.getTableContent(soup, table[0])
-            print(data)
+            dfs.append(self.convertToDataFrame((table[0], table[1], data), character, vt, stance=stance))
+            #print(data)
 
         return 'pingo'
 
@@ -70,16 +75,16 @@ class FrameDataScrapper:
                 elif(header.text == 'Move Name'):
                     types[-1].extend(['Move Name', 'Move Input'])
                 elif(header.text == 'Frame'):
-                    types[-1].extend(['Frame_Startup',
-                                      'Frame_Active', 'Frame_Recovery'])
+                    types[-1].extend(['Startup',
+                                      'Active', 'Recovery'])
                 elif(header.text == 'Recovery'):
-                    types[-1].extend(['Recovery_OnHit', 'Recovery_OnBlock'])
+                    types[-1].extend(['On Hit', 'On Block'])
                 elif(header.text == 'V-Trigger Cancel Recovery'):
-                    types[-1].extend(['VT Cancel Recovery_OnHit',
-                                      'VT Cancel Recovery_OnBlock'])
+                    types[-1].extend(['VT Cancel Recovery On Hit',
+                                      'VT Cancel Recovery On Block'])
                 else:
                     types[-1].append(self.getText(header))
-        return list(map(lambda t: (t[0], t[1:]), types))
+        return list(map(lambda t: (t[0], t[1:-4]), types))
 
     def getTableContent(self, soup, table):
         rows = soup.find('table', {'class': 'frameTbl'}).findAll(['tr', 'th'])
@@ -157,6 +162,15 @@ class FrameDataScrapper:
             with open(path, 'w+') as f:
                 f.write(page.text)
             return BeautifulSoup(page.text, 'html.parser')
+    
+    def convertToDataFrame(self, data, character, vt, stance=None):
+        df = pd.DataFrame(data[2], columns=data[1])
+        df['Character'] = character
+        df['VT'] = vt
+        df['Stance'] = stance
+        df['Move Type'] = data[0]
+        print(df)
+        return df
 
 
 framedataScrapper = FrameDataScrapper()

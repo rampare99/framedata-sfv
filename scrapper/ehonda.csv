@@ -1,0 +1,115 @@
+Character,VT,Move Name,Move Input,Startup,Active,Recovery,On Hit,On Block,VT On Hit,VT On Block,Cancel Info,Damage,Stun,Meter Gain (Whiff/Hit),Properties,Projectile Nullification,Airborne Hurtbox,Comments
+ehonda,vt1,Standing LP,LP,5,3,9,5,3,9,7,"['S', 'CA', 'V']","['40', '40']","['90', '90']",0 / 20,High,,,
+ehonda,vt1,Standing MP,MP,7,4,13,5,2,13,10,['V'],"['70', '70']","['120', '120']",0 / 30,High,,,
+ehonda,vt1,Standing HP,HP,8,6,22,-2,-7,19,14,"['S*', 'CA*', 'V']","['90(*80)', '90*']","['150', '150']",0 / 50,High,,,S*CA*Can be canceled up to active frame 3F *From active frame 4F
+ehonda,vt1,Standing LK,LK,4,3,8,4,2,8,6,"['S', 'CA', 'V']","['40', '40']","['90', '90']",0 / 20,High,,,
+ehonda,vt1,Standing MK,MK,6,2,14,7,4,16,13,"['S', 'CA', 'V']","['60', '60']","['120', '120']",0 / 30,High,,,Forces stand
+ehonda,vt1,Standing HK,HK,8,5,21,0/5,-4/2,20/22,16/19,['V'],"['90(*80)', '90*']","['150', '150*']",0 / 50,High,,,First hit only forces stand Second hit will not hit crouching opponents *For the 2nd hit
+ehonda,vt1,Crouching LP,(WHILE CROUCHING) LP,5(*3),3,9,5,2,8,5,"['S', 'CA', 'V']","['40', '40']","['90', '90']",0 / 20,High,,,Can be rapid canceled *Can be performed by rapid button press
+ehonda,vt1,Crouching MP,(WHILE CROUCHING) MP,6,3,14,4,2,14,12,['V'],"['60', '60']","['120', '120']",0 / 30,High,,,
+ehonda,vt1,Crouching HP,(WHILE CROUCHING) HP,10,2,21,4,-5,19,16,['V'],"['100', '100']","['150', '150']",0 / 50,High,,,Triggers Crush Counter (+25F)
+ehonda,vt1,Crouching LK,(WHILE CROUCHING) LK,4,2,13,3,0,6,3,"['S*', 'V']","['30', '30']","['90', '90']",0 / 20,Low,,,Can chain cancel into crouching LP S*Can only be canceled into Hundred Hand Slap
+ehonda,vt1,Crouching MK,(WHILE CROUCHING) MK,7,3,14,4,-2,9,3,['V'],"['60', '60']","['120', '120']",0 / 30,Low,,,
+ehonda,vt1,Crouching HK,(WHILE CROUCHING) HK,7,4,17,D,-9,D,10,['V*'],"['100', '100']","['150', '150']",0 / 50,Low,,,Triggers Crush Counter (D) V*Can be canceled only if it hits from the front
+ehonda,vt1,Jumping LP,(DURING JUMP) LP,4,5,,,,,,,"['50', '50']","['90', '90']",0 / 20,Mid,,,
+ehonda,vt1,Jumping MP,(DURING JUMP) MP,6,7,,,,,,,"['70', '70']","['120', '120']",0 / 30,Mid,,,
+ehonda,vt1,Jumping HP,(DURING FORWARD OR BACK JUMP) HP,7,3,,,,,,,"['90', '90']","['150', '150']",0 / 50,Mid,,,
+ehonda,vt1,Vertical Jumping HP,(DURING VERTICAL JUMP) HP,10,5,,,,,,,"['90', '90']","['150', '150']",0 / 50,Mid,,,Can move forward or backward using the direction keys
+ehonda,vt1,Jumping LK,(DURING JUMP) LK,4,9,,,,,,,"['50', '50']","['90', '90']",0 / 20,Mid,,,
+ehonda,vt1,Jumping MK,(DURING JUMP) MK,6,4,,,,,,,"['70', '70']","['120', '120']",0 / 30,Mid,,,
+ehonda,vt1,Jumping HK,(DURING JUMP) HK,9,6,,,,,,,"['90', '90']","['150', '150']",0 / 50,Mid,,,
+ehonda,vt1,Harai-Geri,6 + HK,12,3,24,2,-7,21,12,['V'],"['80', '80']","['150', '150']",0 / 40,High,,,Triggers Crush Counter (+20F)
+ehonda,vt1,Chikara-Ashi,3 + HK,20,6,16,5,2,20,17,"['S*', 'V']","['90', '90']","['120', '120']",0 / 40,High,,,Can hit downed opponents S*Can be canceled from 12F until the attack active frames
+ehonda,vt1,Flying Sumo Press,(DURING FORWARD JUMP) 2 + MK,12,9,,,,,,,"['70', '70']","['120', '120']",0 / 30,Mid,,,
+ehonda,vt1,Tokoshizume,MP > 3 + HK,20,6,16,5,2,20,17,"['S*', 'V']","['70', '70']","['100', '100']",0 / 40,High,,,S*Can be canceled from 12F until the attack active frames
+ehonda,vt1,Tsurane Harite,LP > MP,7,4,19,D,-6,D,10,"['S*', 'V', 'VS*']","['50', '50']","['100', '100']",0 / 20,High,,,S*VS*Only on hit
+ehonda,vt1,Hirate,LP > MP > MP MK,13,4,24,D,,D,,['V'],"['70', '70']","['120', '120']",V-Gauge 0 / 80,High,○,,
+ehonda,vt1,Saba-Ori,(NEAR OPPONENT) 6 OR 5 + LP LK,5,3,17,,,,,,"['130', '130']","['170', '170']",0 / 70,Throw,,,
+ehonda,vt1,Tawara Throw,(NEAR OPPONENT) 4 + LP LK,5,3,17,,,,,,"['140', '140']","['170', '170']",0 / 100,Throw,,,
+ehonda,vt1,[VS1] Neko Damashi,(WHEN SELECTING VSKILL I) MP MK,15,4,24,3,-6,24,15,"['S', 'CA', 'V']","['60', '60']","['120', '120']",V-Gauge 0 / 80,High,○,,
+ehonda,vt1,[VS2] Sumo Spirit,(WHEN SELECTING VSKILL II) MP MK,,,50 total frames,,,,,,,,,,,,発動後一回だけ百裂張り手が性質変化 パラメータ変化・Vトリガーキャンセル可能な通常技/払い蹴り/力足/地鎮からキャンセル可能になる
+ehonda,vt1,Onigawara,HP HK,1,,5,,,,,,,,V-Gauge -900 / 0,,,,V-Gauge Timer + 3000F Will be able to use Oni-Daikaku and Oni-Muso
+ehonda,vt1,Raiden-Ho,(DURING GUARD) 6 + LP,17,2,24,D,-2,,,,"['60', '60']","['0', '0']",V-Gauge -300 / 0,High,,,1F - 30F attack invincibility Recover 200 stun upon activation
+ehonda,vt1,L Sumo Headbutt,C4 6 + LP,10,17,10+14 frame(s) after landing,D,-4,,,['CA*'],"['120(*100)', '120*']","['180(*150)', '180*']",10 / 20,High,,13F - 39F,CA*Only for the base hit *Consecutive hits value
+ehonda,vt1,M Sumo Headbutt,C4 6 + MP,8,22,9+14 frame(s) after landing,D,-7,,,['CA*'],"['140(*110)', '140*']","['180(*150)', '180*']",10 / 20,High,,11F - 41F,CA*Only for the base hit *Consecutive hits value
+ehonda,vt1,H Sumo Headbutt,C4 6 + HP,12,28,11+16 frame(s) after landing,D,-12,,,['CA*'],"['160(*120)', '160*']","['180(*150)', '180*']",10 / 20,High,,15F - 53F,Upper body invincibility from 1F - 14F for mid-air attacks CA*Only for the base hit *Consecutive hits value
+ehonda,vt1,EX Sumo Headbutt,C4 6 + P P,7,25,9+23 frame(s) after landing,D,-26,,,,"['160(*130)', '160*']","['200(*180)', '200*']",-300 / 0,High,,10F - 44F,Has armor from 3F until the attack active frames end *Consecutive hits value
+ehonda,vt1,L Hundred Hand Slap,LP (REPEAT BUTTON),7,8,14,3,2,13,11,"['S*', 'CA*', 'V*']","['100', '100*']","['160', '160*']",10 / 30,High,,,V*CA*Only possible during 2nd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt1,M Hundred Hand Slap,MP (REPEAT BUTTON),17,10,14,3,1,12,11,"['S*', 'CA*', 'V*']","['110', '110*']","['170', '170*']",10 / 30,High,,,V*CA*Only possible during 3rd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt1,H Hundred Hand Slap,HP (REPEAT BUTTON),19,14,15,2,-2,12,11,"['S*', 'CA*', 'V*']","['120', '120*']","['180', '180*']",10 / 30,High,,,V*CA*Only possible during 3rd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt1,L Hundred Hand Slap (VS2 Ver.),(DURING V-SKILL II) LP (REPEAT BUTTON),7,8,14,4,2,13,11,"['S*', 'CA*', 'V*']","['110', '110*']","['170', '170*']",V-Gauge 20 / 60 10 / 30,High,,,V*CA*Only possible during 2nd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt1,M Hundred Hand Slap (VS2 Ver.),(DURING V-SKILL II) MP (REPEAT BUTTON),17,10,14,4,1,12,11,"['S*', 'CA*', 'V*']","['120', '120*']","['180', '180*']",V-Gauge 20 / 60 10 / 30,High,,,V*CA*Only possible during 3rd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt1,H Hundred Hand Slap (VS2 Ver.),(DURING V-SKILL II) HP (REPEAT BUTTON),19,14,15,4,-2,12,11,"['S*', 'CA*', 'V*']","['130', '130*']","['190', '190*']",V-Gauge 20 / 60 10 / 30,High,,,V*CA*Only possible during 3rd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt1,EX Hundred Hand Slap,P P (REPEAT BUTTON),16,14,15,4,-2,14,8,"['S*', 'V*']","['100', '100*']","['150', '150*']",-300 / 0,High,,,V*Only possible for the final part S*Can be canceled into Oni-Daikaku
+ehonda,vt1,EX Hundred Hand Slap (VS2 Ver.),(DURING V-SKILL II) P P (REPEAT BUTTON),16,14,15,6,-2,14,8,"['S*', 'V*']","['110', '110*']","['160', '160*']",V-Gauge 40 / 60 -300 / 0,High,,,V*Only possible for the final part S*Can be canceled into Oni-Daikaku
+ehonda,vt1,L Sumo Smash,C2 8 + LK,11,9,24 frame(s) after landing,D,-2,,,,"['120(*100)', '120*']","['180(*160)', '180*']",0 / 70(*60),High/Mid,,5F - 37F,*Only if the descending part hits Recovery value is against a standing block Ryu
+ehonda,vt1,M Sumo Smash,C2 8 + MK,13,10,24 frame(s) after landing,D,-2,,,,"['120(*100)', '120*']","['180(*160)', '180*']",0 / 70(*60),High/Mid,,5F - 41F,*Only if the descending part hits Recovery value is against a standing block Ryu
+ehonda,vt1,H Sumo Smash,C2 8 + HK,16,16,24 frame(s) after landing,D,-2,,,,"['120(*100)', '120*']","['180(*160)', '180*']",0 / 70(*60),High/Mid,,11F - 50F,*Only if the descending part hits Recovery value is against a standing block Ryu
+ehonda,vt1,Sumo Smash(Cross-up),,,,,D,-4,,,,"['80', '80']","['120', '120']",0 / 60,Mid,,,Recovery value is against a standing block Ryu
+ehonda,vt1,EX Sumo Smash,C2 8 + K K,8,18,19 frame(s) after landing,D,5,,,,"['160(*140)', '160*']","['200(*180)', '200*']",-300 / 0,High/Mid,,5F - 39F,1F - 20F throw invincibility *Only if the descending part hits Ascent travel distance can be controlled Recovery value is against a standing block Ryu
+ehonda,vt1,EX Sumo Smash(Cross-up),,,,,D,-2,,,,"['100', '100']","['150', '150']",-300 / 0,Mid,,,
+ehonda,vt1,L Oicho Throw,63214 + LP,7,2,60,D,,,,,"['140', '140']","['180', '180']",20 / 80,Throw,,,
+ehonda,vt1,M Oicho Throw,63214 + MP,7,2,60,D,,,,,"['160', '160']","['180', '180']",20 / 80,Throw,,,
+ehonda,vt1,H Oicho Throw,63214 + HP,7,2,60,D,,,,,"['180', '180']","['180', '180']",20 / 80,Throw,,,
+ehonda,vt1,EX Oicho Throw,63214 + P P,5,2,60,D,,,,,"['200', '200']","['200', '200']",-300 / 0,Throw,,,
+ehonda,vt1,V - Oni-Daikaku,(DURING V-TRIGGER I) HP HK,10,24,10+10 frame(s) after landing,D,-4,,,"['S*', 'CA*']","['120(*100)', '120*']","['200', '200']",20 / 40,High,,15F - 46F,"Uses 1000F V-Gauge Timer Can be canceled into from normal and unique attacks, and from Hundred Hand Slap S*Can cancel into Oni-Muso only on hit CA*Only for the base hit Can be held up to 50F (Honda will perform the max-hold version after 50F) Has armor from 4F until 2F before the attack active frames *Consecutive hits value"
+ehonda,vt1,V - Oni-Daikaku(Max Hold),(DURING V-TRIGGER I) HP HK (max hold button),60,24,10+10 frame(s) after landing,D,GB,,,"['S*', 'CA*']","['180(*160)', '180*']","['200', '200']",20 / 40,High,,65F - 96F,"Uses 1000F V-Gauge Timer Can be canceled into from normal and unique attacks, and from Hundred Hand Slap S*Can cancel into Oni-Muso only on hit CA*Only for the base hit During guard break+27F Has armor from 4F until the end of the attack active frames of the base hit Projectile invincibility from the end of the attack active frames of the base hit up to the 1F after the end of the attack active frames *Consecutive hits value"
+ehonda,vt1,V - Oni-Muso,(DURING V-TRIGGER I) HP HK > HP HK,3,24,10+10 frame(s) after landing,D,,,,['CA*'],"['120', '120*']","['200', '200*']",20 / 40,High,,8F - 39F,Uses 1200F V-Gauge Timer Can only be performed if Oni-Daikaku hits CA*Only for the base hit
+ehonda,vt1,Kamigashima,236 236 + P,9,29,9+28 frame(s) after landing,D,-26,,,,"['340', '340']","['0', '0']",-900 / 0,High,,,14F - 36F projectile invincibility 1F - 13F full invincibility
+ehonda,vt2,Standing LP,LP,5,3,9,5,3,9,7,"['S', 'CA', 'V']","['40', '40']","['90', '90']",0 / 20,High,,,
+ehonda,vt2,Standing MP,MP,7,4,13,5,2,13,10,['V'],"['70', '70']","['120', '120']",0 / 30,High,,,
+ehonda,vt2,Standing HP,HP,8,6,22,-2,-7,19,14,"['S*', 'CA*', 'V']","['90(*80)', '90*']","['150', '150']",0 / 50,High,,,S*CA*Can be canceled up to active frame 3F *From active frame 4F
+ehonda,vt2,Standing LK,LK,4,3,8,4,2,8,6,"['S', 'CA', 'V']","['40', '40']","['90', '90']",0 / 20,High,,,
+ehonda,vt2,Standing MK,MK,6,2,14,7,4,16,13,"['S', 'CA', 'V']","['60', '60']","['120', '120']",0 / 30,High,,,Forces stand
+ehonda,vt2,Standing HK,HK,8,5,21,0/5,-4/2,20/22,16/19,['V'],"['90(*80)', '90*']","['150', '150*']",0 / 50,High,,,First hit only forces stand Second hit will not hit crouching opponents *For the 2nd hit
+ehonda,vt2,Crouching LP,(WHILE CROUCHING) LP,5(*3),3,9,5,2,8,5,"['S', 'CA', 'V']","['40', '40']","['90', '90']",0 / 20,High,,,Can be rapid canceled *Can be performed by rapid button press
+ehonda,vt2,Crouching MP,(WHILE CROUCHING) MP,6,3,14,4,2,14,12,['V'],"['60', '60']","['120', '120']",0 / 30,High,,,
+ehonda,vt2,Crouching HP,(WHILE CROUCHING) HP,10,2,21,4,-5,19,16,['V'],"['100', '100']","['150', '150']",0 / 50,High,,,Triggers Crush Counter (+25F)
+ehonda,vt2,Crouching LK,(WHILE CROUCHING) LK,4,2,13,3,0,6,3,"['S*', 'V']","['30', '30']","['90', '90']",0 / 20,Low,,,Can chain cancel into crouching LP S*Can only be canceled into Hundred Hand Slap
+ehonda,vt2,Crouching MK,(WHILE CROUCHING) MK,7,3,14,4,-2,9,3,['V'],"['60', '60']","['120', '120']",0 / 30,Low,,,
+ehonda,vt2,Crouching HK,(WHILE CROUCHING) HK,7,4,17,D,-9,D,10,['V*'],"['100', '100']","['150', '150']",0 / 50,Low,,,Triggers Crush Counter (D) V*Can be canceled only if it hits from the front
+ehonda,vt2,Jumping LP,(DURING JUMP) LP,4,5,,,,,,,"['50', '50']","['90', '90']",0 / 20,Mid,,,
+ehonda,vt2,Jumping MP,(DURING JUMP) MP,6,7,,,,,,,"['70', '70']","['120', '120']",0 / 30,Mid,,,
+ehonda,vt2,Jumping HP,(DURING FORWARD OR BACK JUMP) HP,7,3,,,,,,,"['90', '90']","['150', '150']",0 / 50,Mid,,,
+ehonda,vt2,Vertical Jumping HP,(DURING VERTICAL JUMP) HP,10,5,,,,,,,"['90', '90']","['150', '150']",0 / 50,Mid,,,Can move forward or backward using the direction keys
+ehonda,vt2,Jumping LK,(DURING JUMP) LK,4,9,,,,,,,"['50', '50']","['90', '90']",0 / 20,Mid,,,
+ehonda,vt2,Jumping MK,(DURING JUMP) MK,6,4,,,,,,,"['70', '70']","['120', '120']",0 / 30,Mid,,,
+ehonda,vt2,Jumping HK,(DURING JUMP) HK,9,6,,,,,,,"['90', '90']","['150', '150']",0 / 50,Mid,,,
+ehonda,vt2,Harai-Geri,6 + HK,12,3,24,2,-7,21,12,['V'],"['80', '80']","['150', '150']",0 / 40,High,,,Triggers Crush Counter (+20F)
+ehonda,vt2,Chikara-Ashi,3 + HK,20,6,16,5,2,20,17,"['S*', 'V']","['90', '90']","['120', '120']",0 / 40,High,,,Can hit downed opponents S*Can be canceled from 12F until the attack active frames
+ehonda,vt2,Flying Sumo Press,(DURING FORWARD JUMP) 2 + MK,12,9,,,,,,,"['70', '70']","['120', '120']",0 / 30,Mid,,,
+ehonda,vt2,Tokoshizume,MP > 3 + HK,20,6,16,5,2,20,17,"['S*', 'V']","['70', '70']","['100', '100']",0 / 40,High,,,S*Can be canceled from 12F until the attack active frames
+ehonda,vt2,Tsurane Harite,LP > MP,7,4,19,D,-6,D,10,"['S*', 'V', 'VS*']","['50', '50']","['100', '100']",0 / 20,High,,,S*VS*Only on hit
+ehonda,vt2,Hirate,LP > MP > MP MK,13,4,24,D,,D,,['V'],"['70', '70']","['120', '120']",V-Gauge 0 / 80,High,○,,
+ehonda,vt2,Saba-Ori,(NEAR OPPONENT) 6 OR 5 + LP LK,5,3,17,,,,,,"['130', '130']","['170', '170']",0 / 70,Throw,,,
+ehonda,vt2,Tawara Throw,(NEAR OPPONENT) 4 + LP LK,5,3,17,,,,,,"['140', '140']","['170', '170']",0 / 100,Throw,,,
+ehonda,vt2,[VS1] Neko Damashi,(WHEN SELECTING VSKILL I) MP MK,15,4,24,3,-6,24,15,"['S', 'CA', 'V']","['60', '60']","['120', '120']",V-Gauge 0 / 80,High,○,,
+ehonda,vt2,[VS2] Sumo Spirit,(WHEN SELECTING VSKILL II) MP MK,,,50 total frames,,,,,,,,,,,,発動後一回だけ百裂張り手が性質変化 パラメータ変化・Vトリガーキャンセル可能な通常技/払い蹴り/力足/地鎮からキャンセル可能になる
+ehonda,vt2,Onigawara,HP HK,1,,5,,,,,,,,V-Gauge -900 / 0,,,,V-Gauge Timer + 3000F Will be able to use Oni-Daikaku and Oni-Muso
+ehonda,vt2,Raiden-Ho,(DURING GUARD) 6 + LP,17,2,24,D,-2,,,,"['60', '60']","['0', '0']",V-Gauge -300 / 0,High,,,1F - 30F attack invincibility Recover 200 stun upon activation
+ehonda,vt2,L Sumo Headbutt,C4 6 + LP,10,17,10+14 frame(s) after landing,D,-4,,,['CA*'],"['120(*100)', '120*']","['180(*150)', '180*']",10 / 20,High,,13F - 39F,CA*Only for the base hit *Consecutive hits value
+ehonda,vt2,M Sumo Headbutt,C4 6 + MP,8,22,9+14 frame(s) after landing,D,-7,,,['CA*'],"['140(*110)', '140*']","['180(*150)', '180*']",10 / 20,High,,11F - 41F,CA*Only for the base hit *Consecutive hits value
+ehonda,vt2,H Sumo Headbutt,C4 6 + HP,12,28,11+16 frame(s) after landing,D,-12,,,['CA*'],"['160(*120)', '160*']","['180(*150)', '180*']",10 / 20,High,,15F - 53F,Upper body invincibility from 1F - 14F for mid-air attacks CA*Only for the base hit *Consecutive hits value
+ehonda,vt2,EX Sumo Headbutt,C4 6 + P P,7,25,9+23 frame(s) after landing,D,-26,,,,"['160(*130)', '160*']","['200(*180)', '200*']",-300 / 0,High,,10F - 44F,Has armor from 3F until the attack active frames end *Consecutive hits value
+ehonda,vt2,L Hundred Hand Slap,LP (REPEAT BUTTON),7,8,14,3,2,13,11,"['S*', 'CA*', 'V*']","['100', '100*']","['160', '160*']",10 / 30,High,,,V*CA*Only possible during 2nd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt2,M Hundred Hand Slap,MP (REPEAT BUTTON),17,10,14,3,1,12,11,"['S*', 'CA*', 'V*']","['110', '110*']","['170', '170*']",10 / 30,High,,,V*CA*Only possible during 3rd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt2,H Hundred Hand Slap,HP (REPEAT BUTTON),19,14,15,2,-2,12,11,"['S*', 'CA*', 'V*']","['120', '120*']","['180', '180*']",10 / 30,High,,,V*CA*Only possible during 3rd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt2,L Hundred Hand Slap (VS2 Ver.),(DURING V-SKILL II) LP (REPEAT BUTTON),7,8,14,4,2,13,11,"['S*', 'CA*', 'V*']","['110', '110*']","['170', '170*']",V-Gauge 20 / 60 10 / 30,High,,,V*CA*Only possible during 2nd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt2,M Hundred Hand Slap (VS2 Ver.),(DURING V-SKILL II) MP (REPEAT BUTTON),17,10,14,4,1,12,11,"['S*', 'CA*', 'V*']","['120', '120*']","['180', '180*']",V-Gauge 20 / 60 10 / 30,High,,,V*CA*Only possible during 3rd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt2,H Hundred Hand Slap (VS2 Ver.),(DURING V-SKILL II) HP (REPEAT BUTTON),19,14,15,4,-2,12,11,"['S*', 'CA*', 'V*']","['130', '130*']","['190', '190*']",V-Gauge 20 / 60 10 / 30,High,,,V*CA*Only possible during 3rd attack S*Can be canceled into Oni-Daikaku
+ehonda,vt2,EX Hundred Hand Slap,P P (REPEAT BUTTON),16,14,15,4,-2,14,8,"['S*', 'V*']","['100', '100*']","['150', '150*']",-300 / 0,High,,,V*Only possible for the final part S*Can be canceled into Oni-Daikaku
+ehonda,vt2,EX Hundred Hand Slap (VS2 Ver.),(DURING V-SKILL II) P P (REPEAT BUTTON),16,14,15,6,-2,14,8,"['S*', 'V*']","['110', '110*']","['160', '160*']",V-Gauge 40 / 60 -300 / 0,High,,,V*Only possible for the final part S*Can be canceled into Oni-Daikaku
+ehonda,vt2,L Sumo Smash,C2 8 + LK,11,9,24 frame(s) after landing,D,-2,,,,"['120(*100)', '120*']","['180(*160)', '180*']",0 / 70(*60),High/Mid,,5F - 37F,*Only if the descending part hits Recovery value is against a standing block Ryu
+ehonda,vt2,M Sumo Smash,C2 8 + MK,13,10,24 frame(s) after landing,D,-2,,,,"['120(*100)', '120*']","['180(*160)', '180*']",0 / 70(*60),High/Mid,,5F - 41F,*Only if the descending part hits Recovery value is against a standing block Ryu
+ehonda,vt2,H Sumo Smash,C2 8 + HK,16,16,24 frame(s) after landing,D,-2,,,,"['120(*100)', '120*']","['180(*160)', '180*']",0 / 70(*60),High/Mid,,11F - 50F,*Only if the descending part hits Recovery value is against a standing block Ryu
+ehonda,vt2,Sumo Smash(Cross-up),,,,,D,-4,,,,"['80', '80']","['120', '120']",0 / 60,Mid,,,Recovery value is against a standing block Ryu
+ehonda,vt2,EX Sumo Smash,C2 8 + K K,8,18,19 frame(s) after landing,D,5,,,,"['160(*140)', '160*']","['200(*180)', '200*']",-300 / 0,High/Mid,,5F - 39F,1F - 20F throw invincibility *Only if the descending part hits Ascent travel distance can be controlled Recovery value is against a standing block Ryu
+ehonda,vt2,EX Sumo Smash(Cross-up),,,,,D,-2,,,,"['100', '100']","['150', '150']",-300 / 0,Mid,,,
+ehonda,vt2,L Oicho Throw,63214 + LP,7,2,60,D,,,,,"['140', '140']","['180', '180']",20 / 80,Throw,,,
+ehonda,vt2,M Oicho Throw,63214 + MP,7,2,60,D,,,,,"['160', '160']","['180', '180']",20 / 80,Throw,,,
+ehonda,vt2,H Oicho Throw,63214 + HP,7,2,60,D,,,,,"['180', '180']","['180', '180']",20 / 80,Throw,,,
+ehonda,vt2,EX Oicho Throw,63214 + P P,5,2,60,D,,,,,"['200', '200']","['200', '200']",-300 / 0,Throw,,,
+ehonda,vt2,V - Oni-Daikaku,(DURING V-TRIGGER I) HP HK,10,24,10+10 frame(s) after landing,D,-4,,,"['S*', 'CA*']","['120(*100)', '120*']","['200', '200']",20 / 40,High,,15F - 46F,"Uses 1000F V-Gauge Timer Can be canceled into from normal and unique attacks, and from Hundred Hand Slap S*Can cancel into Oni-Muso only on hit CA*Only for the base hit Can be held up to 50F (Honda will perform the max-hold version after 50F) Has armor from 4F until 2F before the attack active frames *Consecutive hits value"
+ehonda,vt2,V - Oni-Daikaku(Max Hold),(DURING V-TRIGGER I) HP HK (max hold button),60,24,10+10 frame(s) after landing,D,GB,,,"['S*', 'CA*']","['180(*160)', '180*']","['200', '200']",20 / 40,High,,65F - 96F,"Uses 1000F V-Gauge Timer Can be canceled into from normal and unique attacks, and from Hundred Hand Slap S*Can cancel into Oni-Muso only on hit CA*Only for the base hit During guard break+27F Has armor from 4F until the end of the attack active frames of the base hit Projectile invincibility from the end of the attack active frames of the base hit up to the 1F after the end of the attack active frames *Consecutive hits value"
+ehonda,vt2,V - Oni-Muso,(DURING V-TRIGGER I) HP HK > HP HK,3,24,10+10 frame(s) after landing,D,,,,['CA*'],"['120', '120*']","['200', '200*']",20 / 40,High,,8F - 39F,Uses 1200F V-Gauge Timer Can only be performed if Oni-Daikaku hits CA*Only for the base hit
+ehonda,vt2,Kamigashima,236 236 + P,9,29,9+28 frame(s) after landing,D,-26,,,,"['340', '340']","['0', '0']",-900 / 0,High,,,14F - 36F projectile invincibility 1F - 13F full invincibility
