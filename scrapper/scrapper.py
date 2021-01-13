@@ -10,8 +10,8 @@ from bs4 import BeautifulSoup
 class FrameDataScrapper:
 
     def __init__(self):
-        self.characters = {'ehonda': {'vt1': None, 'vt2': None}}
-        # self.characters = json.load(open('./config/characters.json'))
+        # self.characters = {'ehonda': {'vt1': None, 'vt2': None}}
+        self.characters = json.load(open('./config/characters.json'))
         self.url = 'https://game.capcom.com/cfn/sfv/character/{character}/frame/table/{stance}#vt{vt}'
         self.cookies = {
             'language': 'en',
@@ -39,28 +39,30 @@ class FrameDataScrapper:
             pass
 
     def pullFrameData(self, shouldUpdate=False):
+        dfs = []
         for character, sdata in self.characters.items():
             if(list(sdata.values())[0] == None):  # These are v-triggers
                 for vt in sdata:
-                    self.characters[character][vt] = self.pullFrameDataOfCharacter(
-                        character, vt[2], shouldUpdate=shouldUpdate)
+                    dfs.append(self.pullFrameDataOfCharacter(
+                        character, vt[2], shouldUpdate=shouldUpdate))
             else:  # It has also a stance
                 for stance in sdata:
                     for vt in sdata[stance]:
-                        self.characters[character][stance][vt] = self.pullFrameDataOfCharacter(
-                            character, vt[2], stance=stance, shouldUpdate=shouldUpdate)
+                        dfs.append(self.pullFrameDataOfCharacter(
+                            character, vt[2], stance=stance, shouldUpdate=shouldUpdate))
+        result = pd.concat(dfs)
+        #print(pd.concat(dfs))
+        result.to_excel("framedata.xlsx")
+        return result
 
     def pullFrameDataOfCharacter(self, character, vt, stance=None, shouldUpdate=False):
         soup = self.loadSoup(character, vt, stance, shouldUpdate)
         tableHeaders = self.getTableHeaders(soup)
-        print(tableHeaders)
         dfs = []
         for table in tableHeaders:
             data = self.getTableContent(soup, table[0])
             dfs.append(self.convertToDataFrame((table[0], table[1], data), character, vt, stance=stance))
-            #print(data)
-
-        return 'pingo'
+        return pd.concat(dfs)
 
     def getTableHeaders(self, soup):
         rows = soup.find('table', {'class': 'frameTbl'}).findAll('tr')
@@ -169,7 +171,6 @@ class FrameDataScrapper:
         df['VT'] = vt
         df['Stance'] = stance
         df['Move Type'] = data[0]
-        print(df)
         return df
 
 
