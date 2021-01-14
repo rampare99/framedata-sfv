@@ -47,11 +47,11 @@ class FrameDataScrapper:
 
     @staticmethod
     def exportToExcel(df):
-      df.to_excel('framedata.xlsx')
+      df.to_excel('framedata.xlsx', index=False)
 
     @staticmethod
     def exportToJson(df):
-      df.to_json('framedata.json', orient='split')
+      df.to_json('framedata.json', orient='records')
 
     @staticmethod
     def formatListToStringColumns(df):
