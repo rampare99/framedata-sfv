@@ -51,7 +51,7 @@ class FrameDataScrapper:
 
     @staticmethod
     def exportToJson(df):
-      df.to_json('framedata.json', orient='records')
+      df.to_json('framedata.json', orient='split', index=False)
 
     @staticmethod
     def formatListToStringColumns(df):
@@ -80,7 +80,6 @@ class FrameDataScrapper:
                         dfs.append(self.pullFrameDataOfCharacter(
                             character, vt[2], stance=stance, shouldUpdate=shouldUpdate))
         framedata = pd.concat(dfs)
-        framedata = framedata.reset_index(drop=True)
         formattedFramedata = FrameDataScrapper.formatDataframe(framedata)
 
         FrameDataScrapper.exportToExcel(formattedFramedata)
