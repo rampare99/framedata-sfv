@@ -50,9 +50,14 @@ class FrameDataScrapper:
       df.to_excel('framedata.xlsx')
 
     @staticmethod
+    def exportToJson(df):
+      df.to_json('framedata.json', orient='split')
+
+    @staticmethod
     def formatListToStringColumns(df):
       columns = ['Cancel Info', 'Damage', 'Stun']
       for column in columns:
+        df[column].apply(lambda x: x.pop() if x is not None and len(x) == 2 and x[0] == x[1] else None)
         df[column] = df[column].apply(lambda x: ','.join(x) if x is not None else None)
       return df
 
@@ -75,9 +80,11 @@ class FrameDataScrapper:
                         dfs.append(self.pullFrameDataOfCharacter(
                             character, vt[2], stance=stance, shouldUpdate=shouldUpdate))
         framedata = pd.concat(dfs)
+        framedata = framedata.reset_index(drop=True)
         formattedFramedata = FrameDataScrapper.formatDataframe(framedata)
 
         FrameDataScrapper.exportToExcel(formattedFramedata)
+        FrameDataScrapper.exportToJson(formattedFramedata)
 
     def pullFrameDataOfCharacter(self, character, vt, stance=None, shouldUpdate=False):
         soup = self.loadSoup(character, vt, stance, shouldUpdate)
